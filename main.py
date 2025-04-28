@@ -1,4 +1,13 @@
 import tkinter
 import sqlite3
 
-print("Estamos listos para iniciar")
+import tkinter as tk
+from screens.intro_screen import IntroScreen
+
+def main():
+    root = tk.Tk()
+    app = IntroScreen(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
