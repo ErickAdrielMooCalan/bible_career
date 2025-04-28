@@ -1,6 +1,8 @@
 import tkinter as tk
 import pygame
 from PIL import Image, ImageTk  # Para trabajar mejor con imágenes grandes
+from screens.main_menu_screen import MainMenuScreen  # <-- al inicio del intro_screen.py
+
 
 class IntroScreen:
     def __init__(self, master):
@@ -42,7 +44,12 @@ class IntroScreen:
         self.master.after(3000, self.start_game)
 
     def start_game(self):
-        # Detener el sonido después de 3 segundos
         pygame.mixer.music.stop()
-        print("Aquí iríamos al menú principal... (todavía falta crearlo)")
-        # Aquí después pondremos el cambio real de pantalla
+
+        # Primero elimina todo lo anterior (destruye los widgets del intro)
+        for widget in self.master.winfo_children():
+            widget.destroy()
+
+        # Luego carga el nuevo menú
+        from screens.main_menu_screen import MainMenuScreen
+        MainMenuScreen(self.master)
