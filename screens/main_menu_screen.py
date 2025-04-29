@@ -148,7 +148,15 @@ class MainMenuScreen:
         print("Iniciaríamos la Carrera Bíblica aquí!")
 
     def create_questions(self):
-        print("Aquí iríamos a la sección de crear preguntas.")
+        # Primero elimina todo lo anterior (destruye los widgets del intro)
+        for widget in self.master.winfo_children():
+            widget.destroy()
+
+        # Luego crea un nuevo frame o pantalla dentro de la misma ventana
+        from screens.select_sabbath_screen import SelectSabbathScreen
+
+        # Esto crea el frame de la nueva pantalla en lugar de abrir una ventana nueva.
+        new_screen = SelectSabbathScreen(self.master)
 
     def add_groups(self):
         print("Aquí agregaríamos nuevos grupos.")
